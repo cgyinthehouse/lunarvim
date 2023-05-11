@@ -1,8 +1,4 @@
---[[
- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
- `lvim` is the global options object
-]]
--- vim options
+-- VIM OPTIONS
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.relativenumber = true
@@ -13,7 +9,8 @@ vim.opt.foldenable = false
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
--- general
+--------------------------------------------------------------------------
+-- GENERAL
 lvim.log.level = "info"
 lvim.format_on_save = {
 	enabled = true,
@@ -22,26 +19,29 @@ lvim.format_on_save = {
 }
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
---
--- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
+
+--------------------------------------------------------------------------
+-- KEYMAPPINGS <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
--- add your own keymapping
---
 lvim.keys.insert_mode["jk"] = "<ESC>"
 lvim.keys.normal_mode["]b"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["[b"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<S-l>"] = false
 lvim.keys.normal_mode["<S-h>"] = false
+lvim.keys.normal_mode["<leader>bf"] = false
 
--- -- Use which-key to add extra bindings with the leader-key prefix
+-- WHICH_KEY
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
+lvim.builtin.which_key.mappings["bf"] =
+	{ "<cmd>Telescope buffers theme=dropdown previewer=false layout_config={'height':0.6}<cr>", "Find" }
 lvim.builtin.which_key.mappings["Tm"] = { "<cmd>TSModuleInfo<cr>", "Module Info" }
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["o"] = { "<cmd>NvimTreeFocus<CR>", "Focus NvimTree" }
 lvim.builtin.which_key.mappings["gh"] = { "<cmd>Gitsigns toggle_linehl<cr>", "Toggle line highlight" }
 lvim.builtin.which_key.mappings["s;"] = { "<cmd>Telescope command_history<cr>", "Command History" }
-lvim.builtin.which_key.mappings["u"] = { "<cmd>Telescope undo<cr>", "Undo tree" }
-lvim.builtin.which_key.mappings["m"] = { "<cmd>SymbolsOutline<cr>", "Symbols outline" }
+lvim.builtin.which_key.mappings["u"] = { "<cmd>Telescope undo<cr>", "Undo Tree" }
+lvim.builtin.which_key.mappings["m"] = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" }
+lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" }
 lvim.builtin.which_key.mappings["x"] = {
 	name = "Trouble",
 	r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -58,6 +58,8 @@ lvim.builtin.which_key.mappings["C"] = {
 	v = { "<cmd>CccConvert<cr>", "Convert Expression" },
 }
 
+--------------------------------------------------------------------------
+-- TELESCOPE
 lvim.builtin.cmp.cmdline.enable = true
 lvim.builtin.telescope.extensions.undo = {
 	use_delta = true,
@@ -68,26 +70,23 @@ lvim.builtin.telescope.extensions.undo = {
 		width = 0.85,
 		preview_height = 0.8,
 	},
-	mappings = {
-		i = {
-			["<A-y>"] = require("telescope-undo.actions").yank_additions,
-			["<A-d>"] = require("telescope-undo.actions").yank_deletions,
-			["<A-r>"] = require("telescope-undo.actions").restore,
-		},
-		n = {
-			["<A-y>"] = require("telescope-undo.actions").yank_additions,
-			["<A-d>"] = require("telescope-undo.actions").yank_deletions,
-			["<A-r>"] = require("telescope-undo.actions").restore,
-		},
-	},
+	-- mappings = {
+	--   i = {
+	--     ["<cr>"] = require("telescope-undo.actions").yank_additions,
+	--     ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
+	--     ["<C-cr>"] = require("telescope-undo.actions").restore,
+	--   },
+	-- },
 }
 lvim.builtin.telescope.theme = "center"
 lvim.builtin.telescope.on_config_done = function(telescope)
 	pcall(telescope.load_extension, "undo")
 	-- any other extensions loading
 end
--- -- Change theme settings
-lvim.colorscheme = "tokyonight-night"
+
+--------------------------------------------------------------------------
+-- THEME SETTINGS
+lvim.colorscheme = "catppuccin"
 -- lvim.transparent_window = true
 
 lvim.builtin.alpha.active = true
@@ -95,9 +94,14 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.lualine.sections.lualine_a = { { "mode", color = { gui = "bold" } } }
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.nvimtree.setup["modified"] = { enable = true }
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
+lvim.builtin.nvimtree.setup.renderer.icons.git_placement = "after"
 lvim.builtin.nvimtree.setup.renderer.indent_markers.enable = true
 lvim.builtin.nvimtree.setup.renderer.add_trailing = true
+
+--------------------------------------------------------------------------
+--TELESCOPE
 
 -- Automatically install missing parsers when entering buffer
 lvim.builtin.treesitter.auto_install = true
@@ -139,6 +143,9 @@ lvim.builtin.treesitter.ensure_installed = {
 	"dockerfile",
 	"graphql",
 }
+
+--------------------------------------------------------------------------
+-- LSP
 
 -- -- generic LSP settings <https://www.lunarvim.org/docs/configuration/language-features/language-servers>
 
@@ -194,15 +201,16 @@ code_actions.setup({
 	},
 })
 
--- -- Additional Plugins <https://www.lunarvim.org/docs/configuration/plugins/user-plugins>
+--------------------------------------------------------------------------
+-- PLUGINS
+
 lvim.plugins = {
+	{ "folke/trouble.nvim", cmd = "TroubleToggle" },
 	{
-		"folke/trouble.nvim",
-		cmd = "TroubleToggle",
+		"folke/zen-mode.nvim",
+		cmd = "ZenMode",
 	},
-	{
-		"mrjones2014/nvim-ts-rainbow",
-	},
+	{ "mrjones2014/nvim-ts-rainbow" },
 	{ "debugloop/telescope-undo.nvim" },
 	{
 		"kylechui/nvim-surround",
@@ -245,23 +253,35 @@ lvim.plugins = {
 	-- colorscheme
 	{
 		"folke/tokyonight.nvim",
+		lazy = false,
 		opts = { transparent = true },
 		name = "tokyonight",
 	},
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
+		lazy = false,
+		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
-				intergrations = {
-					alpha = true,
-					gitsigns = true,
+				integrations = {
+					sandwich = true,
+					noice = true,
+					mini = true,
+					leap = true,
+					markdown = true,
 					mason = true,
-					lualine = true,
-					nvimtree = true,
+					neotest = true,
+					cmp = true,
+					overseer = true,
+					navic = true,
+					lsp_trouble = true,
+					ts_rainbow2 = true,
 					which_key = true,
+					gitsigns = true,
 				},
 			})
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 	{
