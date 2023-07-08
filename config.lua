@@ -32,8 +32,7 @@ lvim.keys.normal_mode["<leader>bf"] = false
 
 -- WHICH_KEY
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
-lvim.builtin.which_key.mappings["bf"] =
-	{ "<cmd>Telescope buffers theme=dropdown previewer=false layout_config={'height':0.6}<cr>", "Find" }
+lvim.builtin.which_key.mappings["bf"] = { "<cmd>Telescope buffers theme=dropdown previewer=false<cr>", "Find" }
 lvim.builtin.which_key.mappings["Tm"] = { "<cmd>TSModuleInfo<cr>", "Module Info" }
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["o"] = { "<cmd>NvimTreeFocus<CR>", "Focus NvimTree" }
@@ -86,7 +85,7 @@ end
 
 --------------------------------------------------------------------------
 -- THEME SETTINGS
-lvim.colorscheme = "catppuccin"
+lvim.colorscheme = "tokyonight-night"
 -- lvim.transparent_window = true
 
 lvim.builtin.alpha.active = true
@@ -96,6 +95,8 @@ lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup["modified"] = { enable = true }
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
+lvim.builtin.nvimtree.setup.renderer.icons.glyphs.folder.arrow_open = ""
+lvim.builtin.nvimtree.setup.renderer.icons.glyphs.folder.arrow_closed = ""
 lvim.builtin.nvimtree.setup.renderer.icons.git_placement = "after"
 lvim.builtin.nvimtree.setup.renderer.indent_markers.enable = true
 lvim.builtin.nvimtree.setup.renderer.add_trailing = true
