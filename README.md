@@ -1,6 +1,5 @@
-<p align="center"><img src="https://vvgskppmennronkqbstj.supabase.co/storage/v1/object/public/memes/38e49d24-a90a-4cf9-9825-602a6c3e1bb7/dev-memes%20(9).jpgdev-memes.comb560d4e1-4996-4f0a-84db-c1b5e5e4564a" width="60%" alt="MEME" /></p>
+<p align="center"><img src="https://vvgskppmennronkqbstj.supabase.co/storage/v1/object/public/memes/38e49d24-a90a-4cf9-9825-602a6c3e1bb7/dev-memes%20(10).jpgdev-memes.com5f7c970c-65fe-47d3-98e9-22a86358dcad" width="60%" alt="MEME" /></p>
 <!--MEME
-https://vvgskppmennronkqbstj.supabase.co/storage/v1/object/public/memes/38e49d24-a90a-4cf9-9825-602a6c3e1bb7/dev-memes%20(10).jpgdev-memes.com5f7c970c-65fe-47d3-98e9-22a86358dcad
 https://vvgskppmennronkqbstj.supabase.co/storage/v1/object/public/memes/38e49d24-a90a-4cf9-9825-602a6c3e1bb7/dev-memes%20(11).jpgdev-memes.com49474f26-a768-4db2-90a5-60e1e44e5e89
 https://vvgskppmennronkqbstj.supabase.co/storage/v1/object/public/memes/38e49d24-a90a-4cf9-9825-602a6c3e1bb7/dev-memes%20(12).jpgdev-memes.com0d6b0b7c-b360-4a25-a921-ae88f0235b16
 https://vvgskppmennronkqbstj.supabase.co/storage/v1/object/public/memes/38e49d24-a90a-4cf9-9825-602a6c3e1bb7/dev-memes%20(13).jpgdev-memes.com41802917-9243-4204-baf3-44f73bf8ad4d
